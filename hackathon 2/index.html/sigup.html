@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mini hackathon</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="header">
+        <h3>PERSONAL BLOGGING APP</h3>
+        <a href="./login.html">
+        <button class="login">Login</button></a>
+      
+   
+    </div>
+    <div class="navbar">
+        <h1>Signup</h1>
+    </div>
+    <form>
+        <div class="form">
+            <div class="label">
+                <!-- <label>First name</label> -->
+
+                <input type="text" placeholder=" Enter first name" id="firstName">
+                <br><br>
+
+                <!-- <label>CONTACT</label> -->
+                <input type="Last name" placeholder=" Enter lastname" id="lastName"><br><br>
+                <!-- <label>EMAIL</label> -->
+                <input type="text" placeholder="Enter email" id="email"><br><br>
+                <!-- <label>PASWORD</label> -->
+                <input type="password" placeholder="Enter pasword" id="pasword"><br><br>
+                <input type="password" placeholder="Repeat pasword" id="repeatpasword"><br><br>
+
+                <div class="center">
+                    <a href="./dashboard.html">
+                        <button type="button">SIGNUP</button>
+                    </a>
+
+                    <script type="module">
+                        // Import the functions you need from the SDKs you need
+                        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.3.0/firebase-app.js";
+                        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.3.0/firebase-analytics.js";
+                        import { getAuth, createUserWithfirstNameAndlastNameAndEmailAndPasswordand } from "firebase/auth";
+                        // TODO: Add SDKs for Firebase products that you want to use
+                        // https://firebase.google.com/docs/web/setup#available-libraries
+
+                        // Your web app's Firebase configuration
+                        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+                        const firebaseConfig = {
+                            apiKey: "AIzaSyCwPQvb9gYDaW74xbEoeb-T657KwTFaWrU",
+                            authDomain: "hackathon-11114.firebaseapp.com",
+                            projectId: "hackathon-11114",
+                            storageBucket: "hackathon-11114.appspot.com",
+                            messagingSenderId: "1087468597055",
+                            appId: "1:1087468597055:web:fd7af999c895273031ad8a",
+                            measurementId: "G-91QK5SKLJE"
+                        };
+
+                        // Initialize Firebase
+                        const app = initializeApp(firebaseConfig);
+                        const analytics = getAnalytics(app);
+                        const auth = getAuth(app);
+                        buttonData.addEventListener("click", (e) => {
+                            var firstName=document.getElementById("firstName").value
+                            var lastName=document.getElementById("lastName").value
+                            var email=document.getElementById("email").value
+                            var pasword=document.getElementById("pasword").value
+                            var repeatpasword=document.getElementById("repeatpasword").value
+
+                            createUserWithEmailAndPassword(firstName,lastName, email, password,repeatpasword)
+                                .then((userCredential) => {
+                                     
+                                    const user = userCredential.user;
+                                  
+                                    alert("user created successfuly");
+                                })
+                                .catch((error) => {
+                                    const errorCode = error.code;
+                                    const errorMessage = error.message;
+                                   
+                                    alert(errorMessage);
+
+                                });
+
+                        })
+
+                    </script>
+
+
+
+
+                    <script src="./app.js"></script>
+</body>
+
+</html>
